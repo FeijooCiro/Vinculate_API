@@ -1,56 +1,37 @@
-import express, { Application } from 'express'
-import cors from "cors"
+import express from 'express'
+import morgan from 'morgan'
+import cors from 'cors'
 
-import db from '../connection/connection'
-// routes inpots
+import index from '../routes/index.routes'
+import usuario from '../routes/usuario.routes'
 
-class Server {
-    private app: Application
-    private port: string
-    private paths = {
-        // paths of rouths
+class App {
+    private App: express.Application
+
+    constructor(private PORT?: number | string) {
+        this.App = express()
+        this.Settings()
+        this.MiddleWares()
+        this.Routes()
     }
 
-    constructor() {
-        this.app = express()
-        this.port = process.env.PORT || '3000' 
+    Settings() { this.App.set('port', this.PORT || process.env.PORT || 3000) }
 
-        // Métodos iniciales
-        this.views()
-        this.dbConnection()
-        this.middlewares()
-        this.routes()
+    MiddleWares() {
+        this.App.use(morgan('dev'))
+        this.App.use(express.json())
+        this.App.use(cors())
     }
 
-    async dbConnection() {
-        try {
-            await db.authenticate()
-            console.log('Database online')
-        } catch (error) {
-            throw new Error( String(error) )
-        }
+    Routes() {
+        this.App.use(index)
+        this.App.use('/usuarios', usuario)
     }
 
-    routes() {
-        // especification of routes
-    }
- 
-    middlewares() {
-        this.app.use( cors())
-        this.app.use( express.json() )
-        this.app.use( express.static('client'))
-    }
-
-    listen() {
-        this.app.listen( this.port, () => {
-            console.log(`Servidor corriendo en el puerto ${this.port}`)
-        })
-    }
-
-    views(){
-        // paths to views
-        // this.app.set('views', path.join(__dirname, 'client', '...'));
+    async Listen(): Promise<void> {
+        await this.App.listen(this.App.get('port'))
+        console.log('Server running in Port:', this.App.get('port'))
     }
 }
 
-export default Server
+export default App

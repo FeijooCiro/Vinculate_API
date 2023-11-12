@@ -12,4 +12,4 @@ export interface institucionETP {
     usuario: Usuario
 }
 
-export type InstitucionETP = Omit<institucionETP, 'idInstitucionETP'>
+export type InstitucionETP = Omit<institucionETP, 'idInstitucionETP'> 

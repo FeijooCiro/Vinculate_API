@@ -1,5 +1,6 @@
-import { ApellidoEstudiante } from "./apellidoestudiante.model"
+import { ApellidoEstudiante } from "./apellidoEstudiante.model"
 import { NombreEstudiante } from "./nombreEstudiante.model"
+import { NombreInstitucion } from "./nombreInstitucion.model"
 import { TituloEgreso } from "./tituloEgreso.model"
 import { Usuario } from "./usuario.model"
 
@@ -11,6 +12,7 @@ export interface estudiantePostulado {
     apellidoEstudiante: ApellidoEstudiante
     tituloEgreso: TituloEgreso
     usuario: Usuario
+    nombreInstitucion: NombreInstitucion
 }
 
-export type EstudiantePostulado = Omit<estudiantePostulado, 'idEstudiantePostulado'>
+export type EstudiantePostulado = Omit<estudiantePostulado, 'idEstudiantePostulado'> 

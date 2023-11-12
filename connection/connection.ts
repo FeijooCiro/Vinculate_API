@@ -1,9 +1,13 @@
-import { Sequelize } from 'sequelize'
+import { createPool, Pool } from 'mysql2/promise'
 
-const db = new  Sequelize('vinculate', 'root', '', {
-    host: 'localhost',
-    dialect: 'mariadb',
-    //logging: false
-})
+const getConnection = async (): Promise<Pool> => {
+    const connection = await createPool({
+        host: 'localhost',
+        user: 'root',
+        database: 'vinculate',
+    });
 
-export default db
+    return connection;
+}
+
+export default getConnection

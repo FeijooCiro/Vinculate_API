@@ -11,4 +11,4 @@ export interface compania {
     usuario: Usuario
 } 
 
-export type Compania = Omit<compania, 'idCompania'>
+export type Compania = Omit<compania, 'idCompania'> 
