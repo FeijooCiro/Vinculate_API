@@ -6,3 +6,5 @@ export interface oferta_compania {
     ofertaLaboral: OfertaLaboral;
     compania: Compania;
 }
+
+export type OfertaCompania = Omit<oferta_compania, 'idOfertaCompania'> 

@@ -1,5 +1,5 @@
 import { Servicio } from "./servicio.model"
-import { Usuario } from "./usuario.model"
+import { LoginEntry } from "./usuario.model"
 
 export interface compania {
     idCompania?: number
@@ -8,7 +8,7 @@ export interface compania {
     descripcionComp: string
     numTelefono: string
     servicio: Servicio
-    usuario: Usuario
+    usuario: LoginEntry
 } 
 
 export type Compania = Omit<compania, 'idCompania'> 

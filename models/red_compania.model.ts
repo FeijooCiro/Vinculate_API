@@ -6,3 +6,5 @@ export interface Red_Compania {
     redSocial: RedSocial
     compania: Compania
 }
+
+export type RedCompania = Omit<Red_Compania, 'idRedCompania'> 

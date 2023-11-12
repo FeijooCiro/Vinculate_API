@@ -4,6 +4,7 @@ import cors from 'cors'
 
 import index from '../routes/index.routes'
 import usuario from '../routes/usuario.routes'
+import conpania from '../routes/compania.routes'
 
 class App {
     private App: express.Application
@@ -26,6 +27,7 @@ class App {
     Routes() {
         this.App.use(index)
         this.App.use('/usuarios', usuario)
+        this.App.use('/compania', conpania)
     }
 
     async Listen(): Promise<void> {
