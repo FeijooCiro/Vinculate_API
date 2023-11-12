@@ -1,8 +1,8 @@
-import { estudiantePostulado } from "./estuduantePostulado.model"
-import { institucionETP } from "./institucionETP.model"
+import { EstudiantePostulado } from "./estuduantePostulado.model"
+import { InstitucionETP } from "./institucionETP.model"
 
 export interface institucion_estudiante {
     idInstitucionEstudiante?: number
-    institucionETP: institucionETP
-    estudiantePostulado: estudiantePostulado
+    institucionETP: InstitucionETP
+    estudiantePostulado: EstudiantePostulado
 }

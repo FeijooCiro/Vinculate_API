@@ -1,7 +1,9 @@
-import { nombreExperienciaLaboral } from "./nombreExperienciaLaboral.model"
+import { NombreExperienciaLaboral } from "./nombreExperienciaLaboral.model"
 
 export interface experienciaLaboral {
     idExperienciaLaboral?: number
     descripcion: string
-    nombreExperienciaLaboral: nombreExperienciaLaboral
+    nombreExperienciaLaboral: NombreExperienciaLaboral
 }
+
+export type ExperienciaLaboral = Omit<experienciaLaboral, 'idExperiencialaboral'>

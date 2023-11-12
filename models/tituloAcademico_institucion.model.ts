@@ -1,8 +1,8 @@
-import { institucionETP } from "./institucionETP.model"
-import { tituloInstitucion } from "./tituloInstitucion.model"
+import { InstitucionETP } from "./institucionETP.model"
+import { TituloInstitucion } from "./tituloInstitucion.model"
 
 export interface tituloAcademico_Institucion {
     idTituloAcademicoInstitucion?: number
-    tituloInstitucion: tituloInstitucion
-    institucionETP: institucionETP
-}
+    tituloInstitucion: TituloInstitucion
+    institucionETP: InstitucionETP
+} 

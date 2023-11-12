@@ -1,8 +1,8 @@
-import { estudiantePostulado } from "./estuduantePostulado.model"
-import { experienciaLaboral } from "./experienciaLaboral.model"
+import { EstudiantePostulado } from "./estuduantePostulado.model"
+import { ExperienciaLaboral } from "./experienciaLaboral.model"
 
 export interface estudiante_experienciaLaboral {
     idEstudianteExperienciaLaboral?: number
-    estudiantePostulado: estudiantePostulado
-    experienciaLaboral: experienciaLaboral
+    estudiantePostulado: EstudiantePostulado
+    experienciaLaboral: ExperienciaLaboral
 }

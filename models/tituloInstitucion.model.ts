@@ -1,7 +1,9 @@
-import { nombreTituloAcademico } from "./nombreTituloAcademico.model"
+import { NombreTituloAcademico } from "./nombreTituloAcademico.model"
 
 export interface tituloInstitucion {
     idTituloInstitucion?: number
-    nombreTituloAcademico: nombreTituloAcademico
+    nombreTituloAcademico: NombreTituloAcademico
     descripcionTitulo: string
 }
+
+export type TituloInstitucion = Omit<tituloInstitucion, 'idTituloInstitucion'>

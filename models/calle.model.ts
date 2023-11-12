@@ -1,7 +1,9 @@
-import { nombreCalle } from "./nombreCalle.models"
+import { NombreCalle } from "./nombreCalle.models"
 
 export interface calle {
     idCalle?: number
     numCalle: number
-    NombreCalle: nombreCalle
-}
+    NombreCalle: NombreCalle
+} 
+
+export type Calle = Omit<calle, 'idCalle'>

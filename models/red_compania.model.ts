@@ -1,8 +1,8 @@
-import { compania } from "./compania.model"
-import { redSocial } from "./redSocial.model"
+import { Compania } from "./compania.model"
+import { RedSocial } from "./redSocial.model"
 
 export interface Red_Compania {
     idRedCompania?: number
-    redSocial: redSocial
-    compania: compania
+    redSocial: RedSocial
+    compania: Compania
 }

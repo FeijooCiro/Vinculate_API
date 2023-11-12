@@ -1,11 +1,13 @@
-import { areaTrabajo } from "./areaTrabajo.model"
-import { nombrePuesto } from "./nombrePuesto.model"
+import { AreaTrabajo } from "./areaTrabajo.model"
+import { NombrePuesto } from "./nombrePuesto.model"
 
 export interface puestoLaboral {
     idPuestoLaboral?: number
-    nombrePuesto: nombrePuesto
+    nombrePuesto: NombrePuesto
     descripcionPuesto: string
-    areaTrabajo: areaTrabajo
+    areaTrabajo: AreaTrabajo
     estadoPuesto: 'disponible' | 'cubierto'
     modalidadTrabajo: 'presencial' | 'virtual' | 'mixta'
 }
+
+export type PuestoLaboral = Omit<puestoLaboral, 'idPuestoLaboral'>

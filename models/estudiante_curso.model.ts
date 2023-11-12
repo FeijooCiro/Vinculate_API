@@ -1,8 +1,8 @@
-import { curso } from "./curso.model"
-import { estudiantePostulado } from "./estuduantePostulado.model"
+import { Curso } from "./curso.model"
+import { EstudiantePostulado } from "./estuduantePostulado.model"
 
 export interface estudiante_curso {
     idEstudianteCurso?: number
-    estudiantePostulado: estudiantePostulado
-    curso: curso
+    estudiantePostulado: EstudiantePostulado
+    curso: Curso
 }

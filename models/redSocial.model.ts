@@ -1,7 +1,9 @@
-import { nombreRedSocial } from "./nombreRedSocial.model";
+import { NombreRedSocial } from "./nombreRedSocial.model";
 
 export interface redSocial {
     idRedSocial?: number
     link: string
-    nombreRedSocial: nombreRedSocial
+    nombreRedSocial: NombreRedSocial
 }
+
+export type RedSocial = Omit<redSocial, 'idRedSocial'>

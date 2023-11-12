@@ -1,11 +1,13 @@
-import { calle } from "./calle.model"
-import { localidad } from "./localidad.model"
-import { provincia } from "./provincia.model"
+import { Calle } from "./calle.model"
+import { Localidad } from "./localidad.model"
+import { Provincia } from "./provincia.model"
 
 export interface ubicacion {
     idUbicacion?: number
-    provincia: provincia
-    localidad: localidad
+    provincia: Provincia
+    localidad: Localidad
     codigoPostal: string
-    calle: calle
+    calle: Calle
 }
+
+export type Ubicacion = Omit<ubicacion, 'idUbicacion'>

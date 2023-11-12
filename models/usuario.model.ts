@@ -4,3 +4,5 @@ export interface usuario {
     contrasenia: string
     fechaPerfilCreacion: Date
 }
+
+export type Usuario = Omit<usuario, 'idUsuario'>

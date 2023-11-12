@@ -1,8 +1,8 @@
-import { compania } from "./compania.model";
-import { ofertaLaboral } from "./ofertaLaboral.model";
+import { Compania } from "./compania.model";
+import { OfertaLaboral } from "./ofertaLaboral.model";
 
 export interface oferta_compania {
     idOfertaCompania?: number;
-    ofertaLaboral: ofertaLaboral;
-    compania: compania;
+    ofertaLaboral: OfertaLaboral;
+    compania: Compania;
 }

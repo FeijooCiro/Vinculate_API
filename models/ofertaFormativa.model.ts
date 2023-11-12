@@ -1,7 +1,9 @@
-import { nombreOfertaFormativa } from "./nombreOfertaFormativa.model"
+import { NombreOfertaFormativa } from "./nombreOfertaFormativa.model"
 
 export interface ofertaFormativa {
     idOfertaFormativa?: number
     descripcionOfertaFormativa: string
-    nombreOfertaFormativa: nombreOfertaFormativa
+    nombreOfertaFormativa: NombreOfertaFormativa
 }
+
+export type OfertaFormativa = Omit<ofertaFormativa, 'idOfertaFormativa'>
