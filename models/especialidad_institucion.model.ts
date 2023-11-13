@@ -6,3 +6,5 @@ export interface especialidad_Institucion {
     especialidad: Especialidad
     institucionETP: InstitucionETP
 }
+
+export type EspecialidadInstitucion = Omit<especialidad_Institucion, 'idEspecialidadInstitucion'>

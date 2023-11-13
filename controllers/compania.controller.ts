@@ -100,7 +100,7 @@ const addEntry = async (req: Request, res: Response) => {
         await connection.query('INSERT INTO areaTrabajo SET ?', [{newWorkAreaEntry}])  
         await connection.query('INSERT INTO nombrePuesto SET ?', [{newNameJobEntry}])
 
-        await connection.commit();
+        await connection.commit()
 
         res.json({ message: 'Una compania fue agregada. ', insertedCompanyId })
     }
@@ -153,16 +153,16 @@ const getEntry = async (req: Request, res: Response) => {
     
 
 
-        const [result] = await connection.query(query, [+req.params.idCompania]);
+        const [result] = await connection.query(query, [+req.params.idCompania])
 
         if (Array.isArray(result)) {
             if (result.length === 0) {
-                res.status(404).json({ message: 'Compania no encontrada' });
+                res.status(404).json({ message: 'Compania no encontrada' })
             } else {
-                res.json(result[0]);
+                res.json(result[0])
             }
         } else {
-            res.json(result);
+            res.json(result)
         }
     }
     catch (err) {
@@ -180,34 +180,34 @@ const getEntry = async (req: Request, res: Response) => {
 const deleteEntry = async (req: Request, res: Response) => {
     const connection = await getConnection()
     try {
-        const companyId = +req.params.idCompania;
-        await connection.beginTransaction();
+        const companyId = +req.params.idCompania
+        await connection.beginTransaction()
 
-        await connection.query('DELETE FROM usuario WHERE idUsuario = (SELECT idUsuario FROM compania WHERE idCompania = ?)', [companyId]);
-        await connection.query('DELETE FROM servicio WHERE idServicio = (SELECT idServicio FROM compania WHERE idCompania = ?)', [companyId]);
-        await connection.query('DELETE FROM puestoLaboral WHERE idPuestoLaboral IN (SELECT idPuestoLaboral FROM ofertaLaboral WHERE idOfertaLaboral IN (SELECT idOfertaLaboral FROM ofertalaboral_compania WHERE idCompania = ?))', [companyId]);
-        await connection.query('DELETE FROM ofertalaboral_compania WHERE idCompania = ?', [companyId]);
-        await connection.query('DELETE FROM red_compania WHERE idCompania = ?', [companyId]);
-        await connection.query('DELETE FROM redSocial WHERE idRedSocial IN (SELECT idRedSocial FROM red_compania WHERE idCompania = ?)', [companyId]);
-        await connection.query('DELETE FROM ofertaLaboral WHERE idOfertaLaboral IN (SELECT idOfertaLaboral FROM ofertalaboral_compania WHERE idCompania = ?)', [companyId]);
-        await connection.query('DELETE FROM areaTrabajo WHERE idAreaTrabajo IN (SELECT idAreaTrabajo FROM puestoLaboral WHERE idPuestoLaboral IN (SELECT idPuestoLaboral FROM ofertaLaboral WHERE idOfertaLaboral IN (SELECT idOfertaLaboral FROM ofertalaboral_compania WHERE idCompania = ?)))', [companyId]);
-        await connection.query('DELETE FROM nombreServicio WHERE idNombreServicio IN (SELECT idNombreServicio FROM servicio WHERE idServicio = (SELECT idServicio FROM compania WHERE idCompania = ?))', [companyId]);
-        await connection.query('DELETE FROM nombreRedSocial WHERE idNombreRedSocial IN (SELECT idNombreRedSocial FROM redSocial WHERE idRedSocial IN (SELECT idRedSocial FROM red_compania WHERE idCompania = ?))', [companyId]);
-        await connection.query('DELETE FROM nombreOfertaLaboral WHERE idNombreOfertaLaboral IN (SELECT idNombreOfertaLaboral FROM ofertaLaboral WHERE idOfertaLaboral IN (SELECT idOfertaLaboral FROM ofertalaboral_compania WHERE idCompania = ?))', [companyId]);
-        await connection.query('DELETE FROM nombrePuesto WHERE idNombrePuesto IN (SELECT idNombrePuesto FROM puestoLaboral WHERE idPuestoLaboral IN (SELECT idPuestoLaboral FROM ofertaLaboral WHERE idOfertaLaboral IN (SELECT idOfertaLaboral FROM ofertalaboral_compania WHERE idCompania = ?)))', [companyId]);
-        await connection.query('DELETE FROM nombrePuesto WHERE idNombrePuesto IN (SELECT idNombrePuesto FROM puestoLaboral WHERE idPuestoLaboral IN (SELECT idPuestoLaboral FROM ofertaLaboral WHERE idOfertaLaboral IN (SELECT idOfertaLaboral FROM ofertalaboral_compania WHERE idCompania = ?)))', [companyId]);
-        await connection.query('DELETE FROM compania WHERE idCompania = ?', [companyId]);
+        await connection.query('DELETE FROM usuario WHERE idUsuario = (SELECT idUsuario FROM compania WHERE idCompania = ?)', [companyId])
+        await connection.query('DELETE FROM servicio WHERE idServicio = (SELECT idServicio FROM compania WHERE idCompania = ?)', [companyId])
+        await connection.query('DELETE FROM puestoLaboral WHERE idPuestoLaboral IN (SELECT idPuestoLaboral FROM ofertaLaboral WHERE idOfertaLaboral IN (SELECT idOfertaLaboral FROM ofertalaboral_compania WHERE idCompania = ?))', [companyId])
+        await connection.query('DELETE FROM ofertalaboral_compania WHERE idCompania = ?', [companyId])
+        await connection.query('DELETE FROM red_compania WHERE idCompania = ?', [companyId])
+        await connection.query('DELETE FROM redSocial WHERE idRedSocial IN (SELECT idRedSocial FROM red_compania WHERE idCompania = ?)', [companyId])
+        await connection.query('DELETE FROM ofertaLaboral WHERE idOfertaLaboral IN (SELECT idOfertaLaboral FROM ofertalaboral_compania WHERE idCompania = ?)', [companyId])
+        await connection.query('DELETE FROM areaTrabajo WHERE idAreaTrabajo IN (SELECT idAreaTrabajo FROM puestoLaboral WHERE idPuestoLaboral IN (SELECT idPuestoLaboral FROM ofertaLaboral WHERE idOfertaLaboral IN (SELECT idOfertaLaboral FROM ofertalaboral_compania WHERE idCompania = ?)))', [companyId])
+        await connection.query('DELETE FROM nombreServicio WHERE idNombreServicio IN (SELECT idNombreServicio FROM servicio WHERE idServicio = (SELECT idServicio FROM compania WHERE idCompania = ?))', [companyId])
+        await connection.query('DELETE FROM nombreRedSocial WHERE idNombreRedSocial IN (SELECT idNombreRedSocial FROM redSocial WHERE idRedSocial IN (SELECT idRedSocial FROM red_compania WHERE idCompania = ?))', [companyId])
+        await connection.query('DELETE FROM nombreOfertaLaboral WHERE idNombreOfertaLaboral IN (SELECT idNombreOfertaLaboral FROM ofertaLaboral WHERE idOfertaLaboral IN (SELECT idOfertaLaboral FROM ofertalaboral_compania WHERE idCompania = ?))', [companyId])
+        await connection.query('DELETE FROM nombrePuesto WHERE idNombrePuesto IN (SELECT idNombrePuesto FROM puestoLaboral WHERE idPuestoLaboral IN (SELECT idPuestoLaboral FROM ofertaLaboral WHERE idOfertaLaboral IN (SELECT idOfertaLaboral FROM ofertalaboral_compania WHERE idCompania = ?)))', [companyId])
+        await connection.query('DELETE FROM nombrePuesto WHERE idNombrePuesto IN (SELECT idNombrePuesto FROM puestoLaboral WHERE idPuestoLaboral IN (SELECT idPuestoLaboral FROM ofertaLaboral WHERE idOfertaLaboral IN (SELECT idOfertaLaboral FROM ofertalaboral_compania WHERE idCompania = ?)))', [companyId])
+        await connection.query('DELETE FROM compania WHERE idCompania = ?', [companyId])
 
-        await connection.commit();
+        await connection.commit()
 
-        res.json({ message: 'La compañía y todos los registros relacionados fueron eliminados exitosamente.' });
+        res.json({ message: 'La compañía y todos los registros relacionados fueron eliminados exitosamente.' })
     
     } catch (err) {
-        await connection.rollback();
-        res.status(500).json({ message: 'Error al eliminar la compañía y registros relacionados.' });
+        await connection.rollback()
+        res.status(500).json({ message: 'Error al eliminar la compañía y registros relacionados.' })
     } finally {
         if (connection) {
-            connection.end();
+            connection.end()
         }
     }
 }
@@ -230,34 +230,34 @@ const updateEntry = async (req: Request, res: Response) => {
         const updatedWorkArea: AreaTrabajo = validate.toNewWorkArea(req.body)
         const updatedNameJob: NombrePuesto = validate.toNewNameJob(req.body)
 
-        await connection.beginTransaction();
+        await connection.beginTransaction()
 
-        await connection.query('UPDATE compania SET ? WHERE idCompania = ?', [updatedCompany, +req.params.idCompania]);
+        await connection.query('UPDATE compania SET ? WHERE idCompania = ?', [updatedCompany, +req.params.idCompania])
 
-        await connection.query('UPDATE usuario SET ? WHERE idUsuario = ?', [updatedUser, +req.params.idUsuario]);
-        await connection.query('UPDATE servicio SET ? WHERE idServicio = ?', [updatedService, +req.params.idServicio]);
+        await connection.query('UPDATE usuario SET ? WHERE idUsuario = ?', [updatedUser, +req.params.idUsuario])
+        await connection.query('UPDATE servicio SET ? WHERE idServicio = ?', [updatedService, +req.params.idServicio])
         await connection.query('UPDATE nombreServicio SET ? WHERE idNombreServicio = ?', [updatedNameService, +req.params.idMombreServicio])
-        await connection.query('UPDATE red_compania SET ? WHERE idCompania = ?', [updatedCompanyNetwork, +req.params.idCompania]);
-        await connection.query('UPDATE redSocial SET ? WHERE idRedSocial = ?', [updatedSocialNetwork, +req.params.idRedSocial]);
-        await connection.query('UPDATE nombreRedSocial SET ? WHERE idNombreRedSocial = ?', [updatedNameSocialNetwork, +req.params.idNombreRedSocial]);
-        await connection.query('UPDATE ofertalaboral_compania SET ? WHERE idCompania = ?', [updatedJobOfferCompany, +req.params.idCompania]);
-        await connection.query('UPDATE ofertaLaboral SET ? WHERE idOfertaLaboral = ?', [updatedJobOffer, +req.params.idOfertaLaboral]);
-        await connection.query('UPDATE zonaIncumbencia SET ? WHERE idZonaIncumbencia = ?', [updatedIncumbencyArea, +req.params.idZonaIncumbencia]);
-        await connection.query('UPDATE nombreOfertaLaboral SET ? WHERE idNombreOfertaLaboral = ?', [updatedNameJobOffer, +req.params.idNombreOfertaLaboral]);
-        await connection.query('UPDATE puestoLaboral SET ? WHERE idPuestoLaboral = ?', [updatedJob, +req.params.idPuestoLaboral]);        
-        await connection.query('UPDATE areaTrabajo SET ? WHERE idAreaTrabajo = ?', [updatedWorkArea, +req.params.idAreaTrabajo]);
-        await connection.query('UPDATE nombrePuesto SET ? WHERE idNombrePuesto = ?', [updatedNameJob, +req.params.idNombrePuesto]);
+        await connection.query('UPDATE red_compania SET ? WHERE idCompania = ?', [updatedCompanyNetwork, +req.params.idCompania])
+        await connection.query('UPDATE redSocial SET ? WHERE idRedSocial = ?', [updatedSocialNetwork, +req.params.idRedSocial])
+        await connection.query('UPDATE nombreRedSocial SET ? WHERE idNombreRedSocial = ?', [updatedNameSocialNetwork, +req.params.idNombreRedSocial])
+        await connection.query('UPDATE ofertalaboral_compania SET ? WHERE idCompania = ?', [updatedJobOfferCompany, +req.params.idCompania])
+        await connection.query('UPDATE ofertaLaboral SET ? WHERE idOfertaLaboral = ?', [updatedJobOffer, +req.params.idOfertaLaboral])
+        await connection.query('UPDATE zonaIncumbencia SET ? WHERE idZonaIncumbencia = ?', [updatedIncumbencyArea, +req.params.idZonaIncumbencia])
+        await connection.query('UPDATE nombreOfertaLaboral SET ? WHERE idNombreOfertaLaboral = ?', [updatedNameJobOffer, +req.params.idNombreOfertaLaboral])
+        await connection.query('UPDATE puestoLaboral SET ? WHERE idPuestoLaboral = ?', [updatedJob, +req.params.idPuestoLaboral])        
+        await connection.query('UPDATE areaTrabajo SET ? WHERE idAreaTrabajo = ?', [updatedWorkArea, +req.params.idAreaTrabajo])
+        await connection.query('UPDATE nombrePuesto SET ? WHERE idNombrePuesto = ?', [updatedNameJob, +req.params.idNombrePuesto])
 
 
-        await connection.commit();
+        await connection.commit()
 
-        res.json({ message: 'La compañía y registros relacionados fueron actualizados exitosamente.' });
+        res.json({ message: 'La compañía y registros relacionados fueron actualizados exitosamente.' })
     } catch (err) {
-        await connection.rollback();
-        res.status(500).json({ message: 'Error al actualizar la compañía y registros relacionados.' });
+        await connection.rollback()
+        res.status(500).json({ message: 'Error al actualizar la compañía y registros relacionados.' })
     } finally {
         if (connection) {
-            connection.end();
+            connection.end()
         }
     }
 }

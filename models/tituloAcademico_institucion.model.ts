@@ -6,3 +6,5 @@ export interface tituloAcademico_Institucion {
     tituloInstitucion: TituloInstitucion
     institucionETP: InstitucionETP
 } 
+
+export type TituloAcademicoInstitucion = Omit<tituloAcademico_Institucion, 'idTituloAcademicoInstitucion'>

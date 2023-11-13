@@ -1,6 +1,6 @@
 import { NombreInstitucion } from "./nombreInstitucion.model"
 import { Ubicacion } from "./ubicacion.model"
-import { Usuario } from "./usuario.model"
+import { LoginEntry } from "./usuario.model"
 
 export interface institucionETP {
     idInstitucionETP?: number
@@ -9,7 +9,7 @@ export interface institucionETP {
     tipoEducacion: 'Secundaria' | 'Técnica' | 'EPS' | 'Formación Profesional' | 'Tecnicatura Superior'
     descripcionInstitucion: string
     ubicacion: Ubicacion
-    usuario: Usuario
+    usuario: LoginEntry
 }
 
 export type InstitucionETP = Omit<institucionETP, 'idInstitucionETP'> 

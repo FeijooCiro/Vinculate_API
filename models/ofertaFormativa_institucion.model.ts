@@ -6,3 +6,5 @@ export interface ofertaFormativa_institucion {
     ofertaFormativa: OfertaFormativa
     institucionETP: InstitucionETP
 }
+
+export type OfertaFormativaInstitucion = Omit<ofertaFormativa_institucion, 'idOfertaFormativaInstitucion'>

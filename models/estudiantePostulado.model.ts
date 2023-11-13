@@ -2,7 +2,7 @@ import { ApellidoEstudiante } from "./apellidoEstudiante.model"
 import { NombreEstudiante } from "./nombreEstudiante.model"
 import { NombreInstitucion } from "./nombreInstitucion.model"
 import { TituloEgreso } from "./tituloEgreso.model"
-import { Usuario } from "./usuario.model"
+import { LoginEntry } from "./usuario.model"
 
 export interface estudiantePostulado {
     idEstudiantePostulado?: number
@@ -11,7 +11,7 @@ export interface estudiantePostulado {
     nombreEstudiante: NombreEstudiante
     apellidoEstudiante: ApellidoEstudiante
     tituloEgreso: TituloEgreso
-    usuario: Usuario
+    usuario: LoginEntry
     nombreInstitucion: NombreInstitucion
 }
 

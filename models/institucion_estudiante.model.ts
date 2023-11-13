@@ -1,4 +1,4 @@
-import { EstudiantePostulado } from "./estuduantePostulado.model"
+import { EstudiantePostulado } from "./estudiantePostulado.model"
 import { InstitucionETP } from "./institucionETP.model"
 
 export interface institucion_estudiante {

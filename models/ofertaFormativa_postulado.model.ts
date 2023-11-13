@@ -1,4 +1,4 @@
-import { EstudiantePostulado } from "./estuduantePostulado.model"
+import { EstudiantePostulado } from "./estudiantePostulado.model"
 import { OfertaFormativa } from "./ofertaFormativa.model"
 
 export interface ofertaFormativa_postulado {
@@ -7,3 +7,5 @@ export interface ofertaFormativa_postulado {
     ofertaFormativa: OfertaFormativa
     estudiantePostulado: EstudiantePostulado
 }
+
+export type OfertaFormativaPostulado = Omit<ofertaFormativa_postulado, 'idOfertaFormativaPostulado'>
